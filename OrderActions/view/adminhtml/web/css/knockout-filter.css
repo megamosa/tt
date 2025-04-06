@@ -1,0 +1,50 @@
+/**
+ * MagoArab OrderActions - إخفاء عناصر Knockout غير المصرح بها
+ */
+
+/* تعيين مخصص للعناصر المخفية بواسطة Knockout */
+._magoarab_hidden,
+[data-magoarab-hidden="true"],
+li[data-magoarab-hidden="true"],
+.action-menu li[data-magoarab-hidden="true"],
+.action-submenu li[data-magoarab-hidden="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    position: absolute !important;
+    z-index: -9999 !important;
+    pointer-events: none !important;
+}
+
+/* العناصر التي تحتوي على خاصية وجود = false من Knockout */
+[data-bind*="visible: false"],
+li[data-bind*="visible: false"],
+li[data-bind*="_visible: false"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+/* التخصيص المباشر للقائمة من هيكل HTML */
+.action-menu-items ul.action-menu li:not([data-magoarab-allowed="true"]),
+.action-submenu li:not([data-magoarab-allowed="true"]) {
+    display: none !important;
+}
+
+/* تخصيص أعمق لمعالجة التباين في أنماط Magento */
+.action-menu-items [data-bind*="visible"],
+.action-submenu [data-bind*="visible"] {
+    transition: height 0.1s ease, opacity 0.1s ease;
+}
+
+/* تغيير عرض الإطار في حالة العناصر ذات الرؤية المقيدة */
+.action-menu._active {
+    overflow: hidden !important;
+}

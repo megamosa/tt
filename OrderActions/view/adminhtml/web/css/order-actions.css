@@ -1,0 +1,46 @@
+/**
+ * MagoArab OrderActions CSS - Forcefully hide unauthorized actions
+ */
+
+/* Hidden action items */
+.magoarab-hidden-action,
+li.magoarab-hidden-action,
+.action-menu-item.magoarab-hidden-action,
+.action-menu li.magoarab-hidden-action,
+.action-submenu li.magoarab-hidden-action {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    z-index: -9999 !important;
+    clip: rect(0, 0, 0, 0) !important;
+    clip-path: inset(50%) !important;
+}
+
+/* Double-enforce using attribute selector */
+[disabled="disabled"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Special rule for Change Order Status submenu */
+.action-menu li._parent[style*="display: none"] + ul.action-submenu,
+.action-menu li._parent.magoarab-hidden-action + ul.action-submenu {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Ensure disabled items don't take space */
+.action-menu > li[style*="display: none"],
+.action-submenu > li[style*="display: none"] {
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}

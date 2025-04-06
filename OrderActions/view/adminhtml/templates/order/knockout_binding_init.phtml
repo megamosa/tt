@@ -1,0 +1,21 @@
+<?php
+/**
+ * @var $block \Magento\Backend\Block\Template
+ * @var $helper \MagoArab\OrderActions\Helper\Data
+ */
+$helper = $this->helper('MagoArab\OrderActions\Helper\Data');
+$roleId = $helper->getCurrentUserRoleId();
+$permissions = $helper->getPermissionsForJs();
+?>
+<?php if ($helper->isEnabled()): ?>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "MagoArab_OrderActions/js/knockout-binding": {
+            "isEnabled": <?= $helper->isEnabled() ? 'true' : 'false' ?>,
+            "permissions": <?= json_encode($permissions) ?>
+        }
+    }
+}
+</script>
+<?php endif; ?>
